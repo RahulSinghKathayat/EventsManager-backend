@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "echo 'No build needed'",
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
   "author": "",

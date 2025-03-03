@@ -2,7 +2,6 @@ import dotenv from "dotenv"
 import connnectDb from "./db/index.js";
 import express, { response, Router } from "express"
 import cors from "cors"
-import axios from "axios"
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config()
@@ -18,7 +17,6 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 app.get("/api/quote", async(req,res)=>{
     try {
         const model = await genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
-        
         
         const prompt = 'Provide a random inspirational quote.';
         const result = await model.generateContent(prompt)
