@@ -31,4 +31,28 @@ const signupUser = async(req, res) =>{
         })
 }
 
-export { signupUser }
+const signinUser = async(req,res) => {
+    const { username, password } = req.body
+
+    if(!username){
+        return res.status(400).json({
+            message: "user not found"
+        })
+    }
+
+    const user = await User.findOne({
+        username
+    })
+
+    if(!user){
+        return res.status(401).json({
+            message: "user not found"
+        })
+    }
+
+    return res.status(200).json({
+        message: "user loggedIn successfully"
+    })
+}
+
+export { signupUser, signinUser }
